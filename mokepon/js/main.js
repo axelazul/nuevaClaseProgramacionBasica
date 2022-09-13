@@ -30,7 +30,7 @@ function seleccionarMascotaJugador() {
 }
 
     function seleccionarMascotaEnemigo (){
-        let ataqueAleatorio = aleatorio(1,5);
+        let ataqueAleatorio = aleatorio(1, 5);
         let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
 
         if (ataqueAleatorio == 1){
@@ -38,8 +38,8 @@ function seleccionarMascotaJugador() {
         } else if (ataqueAleatorio == 2){
             spanMascotaEnemigo.innerHTML = "Capipepo ";
         } else if ( ataqueAleatorio == 3){
-            spanMascotaEnemigo == "Ratigueya ";
-        } else if ( ataqueAleatorio = 4){
+            spanMascotaEnemigo.innerHTML = "Ratigueya ";
+        } else if ( ataqueAleatorio == 4){
             spanMascotaEnemigo.innerHTML = "Tucapalma ";
         } else {
             spanMascotaEnemigo.innerHTML = "Pydos ";
