@@ -1,4 +1,5 @@
 let ataqueJugador
+let ataqueEnemigo
 
 
 
@@ -12,6 +13,10 @@ function iniciarJuego() {
     botonAgua.addEventListener("click", ataqueAgua);
     let botonTierra = document.getElementById("boton-tierra");
     botonTierra.addEventListener("click", ataqueTierra);
+    let botonElectrico = document.getElementById("boton-electrico");
+    botonElectrico.addEventListener("click", ataqueElectrico);
+    let botonCursed = document.getElementById("boton-cursed");
+    botonCursed.addEventListener("click", ataqueCursed);
 }
 
 function seleccionarMascotaJugador() {
@@ -41,16 +46,16 @@ function seleccionarMascotaJugador() {
 }
 
     function seleccionarMascotaEnemigo (){
-        let ataqueAleatorio = aleatorio(1, 5);
+        let mascotaAleatoria = aleatorio(1, 5);
         let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
 
-        if (ataqueAleatorio == 1){
+        if (mascotaAleatoria == 1){
             spanMascotaEnemigo.innerHTML = "Hipodoge ";
-        } else if (ataqueAleatorio == 2){
+        } else if (mascotaAleatoria == 2){
             spanMascotaEnemigo.innerHTML = "Capipepo ";
-        } else if ( ataqueAleatorio == 3){
+        } else if ( mascotaAleatoria == 3){
             spanMascotaEnemigo.innerHTML = "Ratigueya ";
-        } else if ( ataqueAleatorio == 4){
+        } else if ( mascotaAleatoria == 4){
             spanMascotaEnemigo.innerHTML = "Tucapalma ";
         } else {
             spanMascotaEnemigo.innerHTML = "Pydos ";
@@ -59,17 +64,85 @@ function seleccionarMascotaJugador() {
 
     function ataqueFuego(){
         ataqueJugador = "FUEGO 🔥";
-        alert(ataqueJugador);
+        //alert(ataqueJugador);
+        ataqueAleatorioEnemigo();
     }
 
     function ataqueAgua(){
         ataqueJugador = "AGUA 💧";
-        alert(ataqueJugador);
+        //alert(ataqueJugador);
+        ataqueAleatorioEnemigo();
     }
 
     function ataqueTierra(){
         ataqueJugador = "TIERRA 🌱";
-        alert(ataqueJugador);
+        //alert(ataqueJugador);
+        ataqueAleatorioEnemigo();
+    }
+
+    function ataqueElectrico(){
+        ataqueJugador = "ELECTRICO ⚡";
+        //alert(ataqueJugador);
+        ataqueAleatorioEnemigo();
+    }
+
+    function ataqueCursed(){
+        ataqueJugador = "CURSED ☠";
+        //alert(ataqueJugador);
+        ataqueAleatorioEnemigo();
+    }
+
+    function ataqueAleatorioEnemigo(){
+        let ataqueAleatorio = aleatorio(1, 5)
+
+        if (ataqueAleatorio == 1 ){
+            ataqueEnemigo = "FUEGO 🔥";
+        } else if (ataqueAleatorio == 2){
+            ataqueEnemigo = "AGUA 💧";
+        } else if ( ataqueAleatorio == 3){
+            ataqueEnemigo = "TIERRA 🌱";
+        } else if ( ataqueAleatorio == 4){
+            ataqueEnemigo = "ELECTRICO ⚡";
+        } else {
+            ataqueEnemigo = "CURSED ☠";
+        }
+
+        combate();
+    }
+
+    function combate (){
+        if ( ataqueEnemigo == ataqueJugador){
+            alert("EMPATE 🥱");
+        } else if ( ataqueJugador == 1 && ataqueEnemigo == 3){
+            alert("PERDISTE!! 😔");
+        } else if ( ataqueJugador == 2 && ataqueEnemigo == 1){
+            alert("GANASTE!! 😎");
+        } else if ( ataqueJugador == 3 && ataqueEnemigo == 2 ){
+            alert("GANASTE!! 😎");
+        } else if ( ataqueJugador == 1 && ataqueEnemigo == 4 ){
+            alert("PERDISTE!! 😔");
+        } else if ( ataqueJugador == 1 && ataqueEnemigo == 5){
+            alert("PERDISTE!! 😔")
+        } else if ( ataqueJugador == 2 && ataqueEnemigo == 4){
+            alert("PERDISTE!! 😔");
+        } else if ( ataqueJugador == 2 && ataqueEnemigo == 5){
+            alert("PERDISTE!! 😔");
+        } else if ( ataqueJugador == 3 && ataqueEnemigo == 4){
+            alert("GANASTE!! 😎");
+        } else if ( ataqueJugador == 4 && ataqueEnemigo == 1){
+            alert("GANASTE!! 😎");
+        } else if ( ataqueJugador == 4 && ataqueEnemigo == 2){
+            alert("PERDISTE!! 😔");
+        } else {
+            alert("PERDISTE!! 😰");
+        }
+    }
+
+    function crearMensaje (){
+        let sectionMensajes = document.getElementById("mensajes");
+        let parrafo = document.createElement("p");
+        parrafo.innerHTML = "Tu mascota atacó con " +  ataqueJugador + ", y la mascota del enemigo atacó con " + ataqueEnemigo + "PENDIENTE"
+        sectionMensajes.appendChild(parrafo) // sirve para crear y meter los parrafos creados, ( manipulacion del DOM )
     }
 
     function  aleatorio (min, max){
