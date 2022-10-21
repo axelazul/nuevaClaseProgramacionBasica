@@ -2,7 +2,6 @@ let ataqueJugador
 let ataqueEnemigo
 
 
-
 function iniciarJuego() {
     let botonMascotaJugador = document.getElementById("boton-mascota");
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
@@ -106,42 +105,59 @@ function seleccionarMascotaJugador() {
         } else {
             ataqueEnemigo = "CURSED ☠";
         }
-
         combate();
     }
 
     function combate (){
         if ( ataqueEnemigo == ataqueJugador){
-            alert("EMPATE 🥱");
-        } else if ( ataqueJugador == 1 && ataqueEnemigo == 3){
-            alert("PERDISTE!! 😔");
-        } else if ( ataqueJugador == 2 && ataqueEnemigo == 1){
-            alert("GANASTE!! 😎");
-        } else if ( ataqueJugador == 3 && ataqueEnemigo == 2 ){
-            alert("GANASTE!! 😎");
-        } else if ( ataqueJugador == 1 && ataqueEnemigo == 4 ){
-            alert("PERDISTE!! 😔");
-        } else if ( ataqueJugador == 1 && ataqueEnemigo == 5){
-            alert("PERDISTE!! 😔")
-        } else if ( ataqueJugador == 2 && ataqueEnemigo == 4){
-            alert("PERDISTE!! 😔");
-        } else if ( ataqueJugador == 2 && ataqueEnemigo == 5){
-            alert("PERDISTE!! 😔");
-        } else if ( ataqueJugador == 3 && ataqueEnemigo == 4){
-            alert("GANASTE!! 😎");
-        } else if ( ataqueJugador == 4 && ataqueEnemigo == 1){
-            alert("GANASTE!! 😎");
-        } else if ( ataqueJugador == 4 && ataqueEnemigo == 2){
-            alert("PERDISTE!! 😔");
+            crearMensaje("EMPATE 🥱");
+        } else if ( ataqueJugador == "FUEGO 🔥" && ataqueEnemigo == "TIERRA 🌱"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "AGUA 💧" && ataqueEnemigo == "FUEGO 🔥"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "TIERRA 🌱" && ataqueEnemigo == "AGUA 💧" ){
+            crearMensaje("PERDISTE!! 😔");
+        } else if ( ataqueJugador == "FUEGO 🔥" && ataqueEnemigo == "ELECTRICO ⚡" ){
+            crearMensaje("PERDISTE!! 😔");
+        } else if ( ataqueJugador == "AGUA 💧" && ataqueEnemigo == "TIERRA 🌱" ){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "FUEGO 🔥" && ataqueEnemigo == "CURSED ☠"){
+            crearMensaje("PERDISTE!! 😔")
+        } else if ( ataqueJugador == "AGUA 💧" && ataqueEnemigo == "ELECTRICO ⚡"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "AGUA 💧" && ataqueEnemigo == "CURSED ☠"){
+            crearMensaje("PERDISTE!! 😔");
+        } else if ( ataqueJugador == "TIERRA 🌱" && ataqueEnemigo == "ELECTRICO ⚡"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "ELECTRICO ⚡" && ataqueEnemigo == "FUEGO 🔥"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "ELECTRICO ⚡" && ataqueEnemigo == "AGUA 💧"){
+            crearMensaje("PERDISTE!! 😔");
+        } else if ( ataqueJugador == "TIERRA 🌱" && ataqueEnemigo == "FUEGO 🔥"){
+            crearMensaje("PERDISTE!! 😔");
+        } else if ( ataqueJugador == "TIERRA 🌱" && ataqueEnemigo == "CURSED ☠"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "ELECTRICO ⚡" && ataqueEnemigo == "TIERRA 🌱"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "ELECTRICO ⚡" && ataqueEnemigo == "CURSED ☠"){
+            crearMensaje("PERDISTE!! 😔"); 
+        } else if ( ataqueJugador == "CURSED ☠" && ataqueEnemigo == "FUEGO 🔥"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "CURSED ☠" && ataqueEnemigo == "AGUA 💧"){
+            crearMensaje("GANASTE!! 😎");
+        } else if ( ataqueJugador == "CURSED ☠" && ataqueEnemigo == "TIERRA 🌱"){
+            crearMensaje("PERDISTE!! 😔");
+        } else if ( ataqueJugador == "CURSED ☠" && ataqueEnemigo == "ELECTRICO ⚡"){
+            crearMensaje("GANASTE!! 😎"); 
         } else {
-            alert("PERDISTE!! 😰");
-        }
+            crearMensaje("PERDISTE!!😔");
+        }   
     }
-
-    function crearMensaje (){
+    
+    function crearMensaje (resultado){
         let sectionMensajes = document.getElementById("mensajes");
         let parrafo = document.createElement("p");
-        parrafo.innerHTML = "Tu mascota atacó con " +  ataqueJugador + ", y la mascota del enemigo atacó con " + ataqueEnemigo + "PENDIENTE"
+        parrafo.innerHTML = "Tu mascota atacó con " +  ataqueJugador + ", y la mascota del enemigo atacó con " + ataqueEnemigo + "- " + resultado;
         sectionMensajes.appendChild(parrafo) // sirve para crear y meter los parrafos creados, ( manipulacion del DOM )
     }
 
