@@ -44,7 +44,7 @@ function seleccionarMascotaJugador() {
    let spanMascotaJugador = document.getElementById("mascota-jugador");
    
     if (inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = "Hipodoge ";
+        spanMascotaJugador.innerHTML = "BARCELONA ";
     } else if (inputCapipepo.checked){
         spanMascotaJugador.innerHTML = "Capipepo ";
     } else if (inputRatigueya.checked){
