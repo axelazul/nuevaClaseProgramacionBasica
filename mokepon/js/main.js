@@ -34,7 +34,7 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display = "none";
 
     let sectionSelecionarAtaque = document.getElementById("seleccionar-ataque");
-    sectionSelecionarAtaque.style.display = "block";
+    sectionSelecionarAtaque.style.display = "flex";
 
    let inputHipodoge = document.getElementById("hipodoge");
    let inputCapipepo = document.getElementById("capipepo");
@@ -44,7 +44,7 @@ function seleccionarMascotaJugador() {
    let spanMascotaJugador = document.getElementById("mascota-jugador");
    
     if (inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = "BARCELONA ";
+        spanMascotaJugador.innerHTML = "Hipodoge ";
     } else if (inputCapipepo.checked){
         spanMascotaJugador.innerHTML = "Capipepo ";
     } else if (inputRatigueya.checked){
