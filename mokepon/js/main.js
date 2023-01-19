@@ -197,25 +197,23 @@ function crearMensaje (resultado){
         let ataquesDelJugador = document.getElementById("ataques-del-jugador");
         let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
 
+        let notificacion = document.createElement("p");
         let nuevoAtaqueDelJugador = document.createElement("p");
         let nuevoAtaqueDelEnemigo = document.createElement("p");
 
         sectionMensajes.innerHTML = resultado;
-        nuevoAtaqueDelJugador.innerHTML = ataquesDelJugador;
-        nuevoAtaqueDelEnemigo.innerHTML = ataquesDelEnemigo;
-        //let parrafo = document.createElement("p");
-        //parrafo.innerHTML = "Tu mascota atacó con " +  ataqueJugador + ", y la mascota del enemigo atacó con " + ataqueEnemigo + "- " + resultado;
+        nuevoAtaqueDelJugador = ataquesDelJugador;
+        nuevoAtaqueDelEnemigo = ataquesDelEnemigo;
 
-        ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
-        ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
+        ataquesDelJugador.appendChild(notificacion);
+        ataquesDelEnemigo.appendChild(notificacion);
 }
 
 function crearMensajeFinal (resultadoFinal){
     let sectionMensajes = document.getElementById("resultado");
     
     sectionMensajes.innerHTML = resultadoFinal;
-    
-
+  
     let botonFuego = document.getElementById("boton-fuego");
     botonFuego.disabled = true
     let botonAgua = document.getElementById("boton-agua");
