@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>MOKEPON!</title>
-        <script src="js/main.js"></script>
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
@@ -13,24 +12,24 @@
             <h2 class="subtitulo">Elige tu mascota:</h2>
 
             <div class="tarjetas">
+                <input type="radio" name="mascota" id="hipodoge"/>
                 <label class="tarjeta-de-mokepon" for="hipodoge">
                     <p>Hipodoge</p>
                     <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="Hipodoge">
                 </label>
-            <input type="radio" name="mascota" id="hipodoge"/>
-
+            
+            <input type="radio" name="mascota" id="capipepo"/>
             <label class="tarjeta-de-mokepon" for="capipepo">
                 <p>Capipepo</p>
                 <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="Capipepo">
             </label>
-            <input type="radio" name="mascota" id="capipepo"/>
 
+            <input type="radio" name="mascota" id="ratigueya"/>
             <label class="tarjeta-de-mokepon" for="ratigueya">
                 <p>Hipodoge</p>
                 <img src="./assets/mokepons_mokepon_ratigueya_attack.png" alt="Ratigueya">
             </label>
-            <input type="radio" name="mascota" id="ratigueya"/>
-
+            
             <!-- <label for="tucapalma">Tucapalma</label> -->
             <!-- <input type="radio" name="mascota" id="tucapalma"/> -->
 
@@ -49,9 +48,9 @@
 
         <section id="seleccionar-ataque">
             <h1 class="titulo" >Mokepon</h1>
-            <h2 class="subtitulo">Elige tu ataque:</h2>
+            <h2 class="subtitulo">Elige tu Ataque:</h2>
 
-            <div>
+            <div class="tarjetas-ataques">
                 <button id="boton-fuego" class="boton-de-ataque">Fuego! 🔥</button>  
                 <button id="boton-agua" class="boton-de-ataque">Agua! 💧</button>
                 <button id="boton-tierra" class="boton-de-ataque">Tierra! 🌱</button>
@@ -59,6 +58,7 @@
                 <button id="boton-cursed">Cursed! ☠</button> --> 
             </div>
 
+<<<<<<< HEAD
             <div>
                 <section id="mensajes">
                     <!-- <p>Tu mascota atacó con FUEGO, la mascota del enemigo atacó con TIERRA -- GANASTE!! 🎉</p> --> 
@@ -68,12 +68,30 @@
                     <button id="boton-reiniciar">Reiniciar🕹</button>
                 </section>
             </div>
+=======
+                <div id="mensajes">
+                    <p id="resultado">Mucha Suerte!!</p>
+>>>>>>> 6620a2ab1e4d7718cf3d9995bff38d08a09f751a
 
-            <div>
-                <p>Tu mascota <span id="mascota-jugador"> </span>tiene <span id="vidas-jugador">3</span> vidas!!</p>
-            <p>La mascota <span id="mascota-enemigo"> </span>del enemigo tiene <span id="vidas-enemigo">3</span> vidas!!</p>
+                    <section id="reiniciar">
+                        <button id="boton-reiniciar">Reiniciar 🕹</button>
+                    </section>
+                </div>
+            
+            <div class="ataques">
+                <div class="ataques-jugador">
+                    <p id="vidas-jugador">3</p>
+                    <p id="mascota-jugador"> </p>
+                    <div id="ataques-del-jugador"></div>
+                </div>
+                <div class="ataques-enemigo">
+                    <p id="vidas-enemigo">3</p>
+                    <p id="mascota-enemigo"> </p>
+                    <div id="ataques-del-enemigo"></div>
+                </div>        
             </div>
-        </section>    
+        </section>  
+        <script src="js/main.js"></script>  
     </body>
     <!-- <script src="js/main.js"></script> EL JS SIEMPRE AL FINAL PARA QUE CARGE TODO EL HTML ANTERIOR, FORMA MAS FACIL DE HACER  -->
 </html>
