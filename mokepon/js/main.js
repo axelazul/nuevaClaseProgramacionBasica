@@ -8,9 +8,6 @@ const botonReiniciar = document.getElementById("boton-reiniciar");
 sectionReiniciar.style.display = "none";  
 
 const sectionSeleccionarMascota = document.getElementById("seleccionar-mascota");
-const inputHipodoge = document.getElementById("hipodoge");
-const inputCapipepo = document.getElementById("capipepo");
-const inputRatigueya = document.getElementById("ratigueya");
 const spanMascotaJugador = document.getElementById("mascota-jugador");
 
 const spanMascotaEnemigo = document.getElementById("mascota-enemigo");
@@ -21,11 +18,16 @@ const spanVidasEnemigo = document.getElementById("vidas-enemigo");
 const sectionMensajes = document.getElementById("resultado");
 const ataquesDelJugador = document.getElementById("ataques-del-jugador");
 const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
+const contenedorTarjetas = document.getElementById("contenedorTarjetas");
 
 
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
+let opcionDeMokepones
+let inputHipodoge
+let inputCapipepo
+let inputRatigueya
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
@@ -39,7 +41,7 @@ class Mokepon {
 }
 
 let hipodoge = new Mokepon('Hipodoge', './assets/mokepons_mokepon_hipodoge_attack.png', 5)
-let capipepo = new Mokepon('Capipeo','./assets/mokepons_mokepon_capipepo_attack.png', 5 )
+let capipepo = new Mokepon('Capipepo','./assets/mokepons_mokepon_capipepo_attack.png', 5 )
 let ratigueya = new Mokepon('Ratigueya', './assets/mokepons_mokepon_ratigueya_attack.png',5)
 
 hipodoge.ataques.push(
@@ -66,10 +68,28 @@ ratigueya.ataques.push(
     { nombre: '🌱', id: 'boton-tierra'},
 )
 
+mokepones.push(hipodoge, capipepo, ratigueya)
 
 
 function iniciarJuego() {    
     sectionSelecionarAtaque.style.display = "none";
+
+    mokepones.forEach((mokepon) => {
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+        <p>${mokepon.nombre}</p>
+        <img src=${mokepon.foto}  alt=${mokepon.nombre}>
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionDeMokepones
+
+        inputHipodoge = document.getElementById("Hipodoge")
+        inputCapipepo = document.getElementById("Capipepo")
+        inputRatigueya = document.getElementById("Ratigueya")
+
+    })
+
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
     botonFuego.addEventListener("click", ataqueFuego);    
     botonAgua.addEventListener("click", ataqueAgua);    
@@ -81,11 +101,11 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display = "none";    
     sectionSelecionarAtaque.style.display = "flex";   
     if (inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = "Hipodoge ";
+        spanMascotaJugador.innerHTML = inputHipodoge.id
     } else if (inputCapipepo.checked){
-        spanMascotaJugador.innerHTML = "Capipepo ";
+        spanMascotaJugador.innerHTML = inputCapipepo.id
     } else if (inputRatigueya.checked){
-        spanMascotaJugador.innerHTML = "Ratigueya ";
+        spanMascotaJugador.innerHTML = inputRatigueya.id
     } else {
         alert("ELIGE TU MASCOTA!!");
         }
@@ -95,11 +115,11 @@ function seleccionarMascotaJugador() {
 function seleccionarMascotaEnemigo (){
         let mascotaAleatoria = aleatorio(1, 3);
         if (mascotaAleatoria == 1){
-            spanMascotaEnemigo.innerHTML = "Hipodoge ";
+            spanMascotaEnemigo.innerHTML = "Hipodoge";
         } else if (mascotaAleatoria == 2){
-            spanMascotaEnemigo.innerHTML = "Capipepo ";
+            spanMascotaEnemigo.innerHTML = "Capipepo";
         } else if ( mascotaAleatoria == 3){
-            spanMascotaEnemigo.innerHTML = "Ratigueya ";
+            spanMascotaEnemigo.innerHTML = "Ratigueya";
     }
 }
 
@@ -163,16 +183,16 @@ function revisarVidas(){
 }
     
 function crearMensaje (resultado){
-        let notificacion = document.createElement("p");
+        
         let nuevoAtaqueDelJugador = document.createElement("p");
         let nuevoAtaqueDelEnemigo = document.createElement("p");
 
         sectionMensajes.innerHTML = resultado;
-        nuevoAtaqueDelJugador = ataquesDelJugador;
-        nuevoAtaqueDelEnemigo = ataquesDelEnemigo;
+        nuevoAtaqueDelJugador.innerHTML = ataquesDelJugador;
+        nuevoAtaqueDelEnemigo.innerHTML = ataquesDelEnemigo;
 
-        ataquesDelJugador.appendChild(notificacion);
-        ataquesDelEnemigo.appendChild(notificacion);
+        ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
+        ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
 }
 
 function crearMensajeFinal (resultadoFinal){
