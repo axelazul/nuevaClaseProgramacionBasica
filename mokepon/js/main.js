@@ -28,6 +28,7 @@ let opcionDeMokepones
 let inputHipodoge
 let inputCapipepo
 let inputRatigueya
+let mascotaJugador
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
@@ -102,25 +103,35 @@ function seleccionarMascotaJugador() {
     sectionSelecionarAtaque.style.display = "flex";   
     if (inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
+        mascotaJugador = inputHipodoge.id
     } else if (inputCapipepo.checked){
         spanMascotaJugador.innerHTML = inputCapipepo.id
+        mascotaJugador = inputCapipepo.id
     } else if (inputRatigueya.checked){
         spanMascotaJugador.innerHTML = inputRatigueya.id
+        mascotaJugador = inputRatigueya.id
     } else {
         alert("ELIGE TU MASCOTA!!");
         }
+
+    extraerAtaques(mascotaJugador)
     seleccionarMascotaEnemigo()
 }
 
-function seleccionarMascotaEnemigo (){
-        let mascotaAleatoria = aleatorio(1, 3);
-        if (mascotaAleatoria == 1){
-            spanMascotaEnemigo.innerHTML = "Hipodoge";
-        } else if (mascotaAleatoria == 2){
-            spanMascotaEnemigo.innerHTML = "Capipepo";
-        } else if ( mascotaAleatoria == 3){
-            spanMascotaEnemigo.innerHTML = "Ratigueya";
+function extraerAtaques(mascotaJugador){
+    let ataques
+    for (let i = 0; i < mokepones.length; i++) {
+        if (mascotaJugador === mokepones[i].nombre) {
+            ataques = mokepones[i].ataques
+        }
+        
     }
+    mostrarAtaques(ataques)
+}
+
+function seleccionarMascotaEnemigo (){
+        let mascotaAleatoria = aleatorio(0, mokepones.length - 1)
+        spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre
 }
 
 function ataqueFuego(){
@@ -188,8 +199,8 @@ function crearMensaje (resultado){
         let nuevoAtaqueDelEnemigo = document.createElement("p");
 
         sectionMensajes.innerHTML = resultado;
-        nuevoAtaqueDelJugador.innerHTML = ataquesDelJugador;
-        nuevoAtaqueDelEnemigo.innerHTML = ataquesDelEnemigo;
+        nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
+        nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo;
 
         ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
         ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
