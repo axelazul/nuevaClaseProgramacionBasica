@@ -17,6 +17,8 @@ const ataquesDelJugador = document.getElementById("ataques-del-jugador");
 const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
 const contenedorTarjetas = document.getElementById("contenedorTarjetas");
 const contenedorAtaques = document.getElementById("contenedorAtaques");
+const sectionVerMapa = document.getElementById("ver-mapa");
+const mapa = document.getElementById("mapa");
 
 
 let mokepones = []
@@ -39,6 +41,7 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let vidasJugador = 3
 let vidasEnemigo = 3
+let lienzo = mapa.getContext("2d");
 
 class Mokepon {
     constructor(nombre, foto, vida){
@@ -46,6 +49,12 @@ class Mokepon {
         this.foto = foto;
         this.vida = vida;
         this.ataques = [];
+        this.x = 20;
+        this.y = 30;
+        this.ancho = 80;
+        this.alto = 80;
+        this.mapaFoto = new Image();
+        this.mapaFoto.src = foto;
     }
 }
 
@@ -82,6 +91,7 @@ mokepones.push(hipodoge, capipepo, ratigueya)
 
 function iniciarJuego() {    
     sectionSelecionarAtaque.style.display = "none";
+    sectionVerMapa.style.display = "none";
 
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
@@ -105,8 +115,17 @@ function iniciarJuego() {
 }
 
 function seleccionarMascotaJugador() {  
-    sectionSeleccionarMascota.style.display = "none";    
-    sectionSelecionarAtaque.style.display = "flex";   
+    sectionSeleccionarMascota.style.display = "none";  
+
+    //sectionSelecionarAtaque.style.display = "flex";  
+    
+    sectionVerMapa.style.display = 'flex';
+
+
+    //let imagenDeCapipepo = new Image();
+    //imagenDeCapipepo.src = capipepo.foto
+    //lienzo.fillRect(5,15,20,40);
+
     if (inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
         mascotaJugador = inputHipodoge.id
@@ -269,6 +288,22 @@ function reiniciarJuego(){
 
 function  aleatorio (min, max){
     return Math.floor(Math.random()* (max-min +1) + min);
+}
+
+function pintarPersonaje (){
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        capipepo.mapaFoto,
+        capipepo.x,
+        capipepo.y,
+        capipepo.ancho,
+        capipepo.alto
+    );
+}
+
+function moverCapipepo(){
+    capipepo.x = capipepo.x + 5
+    pintarPersonaje()
 }
 
 window.addEventListener("load", iniciarJuego); //ESTA LINEA AYUDA A QUE AUNQUE EL LLAMADO SCRIPT DE HTML ESTE AL PRINCIPIO, SE PUEDA CARGAR TODA DE LA PAGINA Y SE EJECUTE DE  BUENA MANERA EL SCRIPT SIN LA NECESIDAD DE COLOCARLO ABAJO EN EL HTML//
