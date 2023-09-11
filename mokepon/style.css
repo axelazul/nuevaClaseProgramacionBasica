@@ -118,13 +118,28 @@ input:checked + label{
     justify-content: center;
 }
 
-#mapa{
+#ver-mapa button{
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
     border: 2px solid white;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 5px 0;
 }
 
-@media (max-width: 360px){
+@media (max-width: 560px){
     .tarjetas, .tarjetas-ataques{
         flex-direction: column;
     }
 
+}
+
+@media (max-width: 300px){
+    #ver-mapa div{
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
 }
